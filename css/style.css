@@ -1,0 +1,18 @@
+.bookContainer {
+  width: 20%;
+  height: 10%;
+  padding: 5%;
+}
+.flex {
+  display: flex;
+}
+
+.flexWrap {
+  flex-wrap: wrap;
+}
+.moreThen150{
+    color:red
+}
+.lessThen20{
+    color: green;
+}
