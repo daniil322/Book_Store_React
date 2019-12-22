@@ -1,18 +1,49 @@
+body {
+  margin: 0;
+}
 .bookContainer {
-  width: 20%;
   height: 10%;
-  padding: 5%;
+  margin: 5px;
 }
 .flex {
   display: flex;
+}
+.pointer {
+  cursor: pointer;
 }
 
 .flexWrap {
   flex-wrap: wrap;
 }
-.moreThen150{
-    color:red
+.moreThen150 {
+  color: red;
 }
-.lessThen20{
-    color: green;
+.lessThen20 {
+  color: green;
+}
+
+.flex {
+  display: flex;
+}
+.saleImg {
+  width: 15%;
+  height: 70px;
+}
+.listImg {
+  height: 70%;
+  width: 70%;
+}
+
+.show:hover {
+  color: dodgerblue;
+}
+.show {
+  text-decoration: underline;
+  color: deepskyblue;
+  cursor: pointer;
+}
+.backBtn {
+  width: 15%;
+  background-color: dodgerblue;
+  cursor: pointer;
 }
