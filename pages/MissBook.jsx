@@ -1,32 +1,9 @@
 import { getBooks } from "../service/books.js";
 import BookList from "../comp/BookList.jsx";
-import BookDetails from "../comp/BookDetails.jsx";
 import Filter from "../comp/BookFilter.jsx";
 export default class Books extends React.Component {
-  state = { selected: false, books: [] };
+  state = { books: [] };
 
-  checkCurrency(currencyCode) {
-    let moneySign = "";
-    switch (currencyCode) {
-      case "ILS":
-        moneySign = "₪";
-        break;
-      case "EUR":
-        moneySign = "€";
-        break;
-      case "USD":
-        moneySign = "$";
-        break;
-    }
-    return moneySign;
-  }
-
-  changeSelected = idx => {
-    this.setState({ selected: this.state.books[idx] });
-  };
-  returnToList = () => {
-    this.setState({ selected: false });
-  };
 
   componentDidMount() {
     this.getBooks();
@@ -35,29 +12,20 @@ export default class Books extends React.Component {
     this.getBooks(filteredBooks);
   };
 
-  getBooks = Filter => {
-    this.setState({ books: getBooks(Filter) });
+  getBooks = filter => {
+    getBooks(filter).then(books => {
+      this.setState({ books: books });
+    });
   };
 
   render() {
-    const { selected, books } = this.state;
-    const page = selected ? (
-      <BookDetails
-        returnToList={this.returnToList}
-        checkCurrency={this.checkCurrency}
-        book={selected}
-      />
-    ) : (
+    const { books } = this.state;
+    if (!books) return <h1>Loading</h1>;
+    return (
       <div>
         <Filter filter={this.filterBooks} />
-        <BookList
-          checkCurrency={this.checkCurrency}
-          selected={this.changeSelected}
-          books={books}
-        />
+        <BookList books={books} />
       </div>
     );
-
-    return page;
   }
 }

@@ -1,19 +1,11 @@
 import Book from "./Book.jsx";
 export default class BookList extends React.Component {
   render() {
-    const { books, selected, checkCurrency } = this.props;
+    const { books } = this.props;
     return (
       <div className="flex flexWrap">
-        {books.map((book, idx) => {
-          return (
-            <Book
-              checkCurrency={checkCurrency}
-              selected={selected}
-              idx={idx}
-              key={book.id}
-              book={book}
-            />
-          );
+        {books.map(book => {
+          return <Book key={book.id} book={book} />;
         })}
       </div>
     );

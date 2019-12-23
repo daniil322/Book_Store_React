@@ -1,12 +1,12 @@
-import { getBooks } from "../service/books";
-
 export default class Filter extends React.Component {
-  state = { title: "", price: "" };
+  state = { title: "", lPrice: "", hPrice: Infinity };
 
   changeValue = event => {
+    let value = event.target.value;
+    if (event.target.name === "hPrice" && !event.target.value) value = Infinity;
     this.setState(
       {
-        [event.target.name]: event.target.value
+        [event.target.name]: value
       },
       this.changeBooks
     );
@@ -30,7 +30,14 @@ export default class Filter extends React.Component {
         />
         <input
           type="number"
-          name="price"
+          name="lPrice"
+          placeholder="Lowest Price"
+          value={price}
+          onChange={this.changeValue}
+        />
+        <input
+          type="number"
+          name="hPrice"
           placeholder="Highest Price"
           value={price}
           onChange={this.changeValue}
