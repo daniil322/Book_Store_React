@@ -3,6 +3,7 @@ import BookDetails from "./pages/BookDetails.jsx";
 import MainPage from "./pages/MainPage.jsx";
 import NavBar from "./comp/nav.jsx";
 import About from "./pages/About.jsx";
+import ModalDialog from "./comp/Modal.jsx";
 const Router = ReactRouterDOM.HashRouter;
 const { Route, Switch } = ReactRouterDOM;
 const { createBrowserHistory } = History;
@@ -13,6 +14,7 @@ class App extends React.Component {
     return (
       <main>
         <Router history={history}>
+          <ModalDialog />
           <NavBar />
           <Switch>
             <Route component={MainPage} path="/" exact></Route>

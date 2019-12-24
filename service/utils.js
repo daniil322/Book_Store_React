@@ -24,6 +24,7 @@ function getPriceClass(amount) {
   }
 }
 
+
 function getPageCountText(pageCount) {
   if (pageCount > 500) {
     return "Long Reading";

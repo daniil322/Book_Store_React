@@ -37,6 +37,7 @@ body {
 }
 .bookContainer {
   height: 10%;
+  width: 25vw;
   margin: 5px;
   border: solid;
   text-align: center;
@@ -74,7 +75,7 @@ body {
   height: 70px;
 }
 .listImg {
-  height: 70%;
+  height: 25vh;
   width: 70%;
 }
 h4 {
@@ -102,6 +103,36 @@ h3 {
   text-align: center;
   color: black;
   text-decoration: none;
+}
+.modal{
+  height: 100vh;
+  width: 100%;
+  background-color: rgba(255, 255, 255, 0.322);
+  position: fixed
+;top: 0;
+left: 0;
+}
+.modalBody{
+  border-radius: 20%;
+    height: 10vh;
+    width: 50%;
+    text-align: center;
+  position: fixed;
+  top: 50%;
+  left: 25%;
+  background-color: white;
+}
+.modalError{
+  border: 3px solid red;
+}
+.modalSuccess{
+  border: 3px solid green;
+}
+.success{
+  color: green;
+}
+.error{
+  color: red;
 }
 
 h1 {

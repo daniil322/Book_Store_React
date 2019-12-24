@@ -4,14 +4,16 @@ export default class BookForm extends React.Component {
     this.name = React.createRef();
     this.rate = React.createRef();
     this.text = React.createRef();
+    this.date = React.createRef();
   }
   handleSubmit = event => {
     event.preventDefault();
     const userName = this.name.current.value;
     const rate = this.rate.current.value;
     const text = this.text.current.value;
-    if (!userName||!rate||!text)return 
-    this.props.onAddReview(userName, rate, text);
+    const date = this.date.current.value;
+    if (!userName || !rate || !text) return;
+    this.props.onAddReview(userName, rate, text, date);
     this.name.current.value = "";
     this.rate.current.value = "";
     this.text.current.value = "";
@@ -20,23 +22,24 @@ export default class BookForm extends React.Component {
   render() {
     return (
       <form onSubmit={this.handleSubmit}>
-          <div className='flex'>
-        <input
-          type="text"
-          name="reviewerName"
-          ref={this.name}
-          placeholder="Your name"
-        />
-        <input
-        className='width100'
-          type="number"
-          name="rating"
-          ref={this.rate}
-          min="1"
-          max="5"
-          placeholder="Rate the book"
-        />
+        <div className="flex">
+          <input
+            type="text"
+            name="reviewerName"
+            ref={this.name}
+            placeholder="Your name"
+          />
+          <input
+            className="width100"
+            type="number"
+            name="rating"
+            ref={this.rate}
+            min="1"
+            max="5"
+            placeholder="Rate the book"
+          />
         </div>
+        <input  type="date" name="date" ref={this.date} id="" />
         <textarea
           name="reviewText"
           ref={this.text}
@@ -46,10 +49,5 @@ export default class BookForm extends React.Component {
         <input type="submit" value="Submit" />
       </form>
     );
-
-    // o Their full name (default: 'Books Reader')
-    // ▪ Use React Ref to make this input focused when form appears
-    // o Rate: 1-5 - use a dropdown
-    // o Read at - datepicker (default now). o Textarea for free text
   }
 }

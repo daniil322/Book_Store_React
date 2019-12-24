@@ -1,4 +1,9 @@
-import { getBooksById, addReview, removeReview } from "../service/books.js";
+import {
+  getBooksById,
+  addReview,
+  removeReview,
+  movePage
+} from "../service/books.js";
 import utils from "../service/utils.js";
 import BookForm from "../comp/BookForm.jsx";
 import BookReview from "../comp/BookReview.jsx";
@@ -10,6 +15,11 @@ export default class BookDetails extends React.Component {
   componentDidMount() {
     this.getPage();
   }
+  movePage = operator => e => {
+    movePage(this.state.book.id, operator).then(id => {
+      this.props.history.push(`/books/${id}`);
+    });
+  };
   componentDidUpdate(prevProps) {
     if (prevProps.match.params.id !== this.props.match.params.id) {
       this.getPage();
@@ -22,9 +32,9 @@ export default class BookDetails extends React.Component {
     });
   };
 
-  onAddReview = (name, rating, text) => {
+  onAddReview = (name, rating, text, date) => {
     const { id } = this.state.book;
-    addReview(name, rating, text, id).then(() => {
+    addReview(name, rating, text, date, id).then(() => {
       this.getPage();
     });
   };
@@ -83,7 +93,6 @@ export default class BookDetails extends React.Component {
         listPrice: { amount, currencyCode, isOnSale }
       }
     } = this.state;
-    console.log(review);
     let pageCountText = utils.getPageCountText(pageCount),
       priceTxt = utils.getPriceClass(amount),
       moneySign = utils.checkCurrency(currencyCode),
@@ -124,6 +133,8 @@ export default class BookDetails extends React.Component {
             <Link to="../books" className="backBtn">
               Back
             </Link>
+            <button onClick={this.movePage(-1)}>←Book</button>
+            <button onClick={this.movePage(1)}>Book→</button>
           </div>
         </div>
         <div className="flex">

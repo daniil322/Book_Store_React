@@ -20,7 +20,7 @@ export default class Filter extends React.Component {
     const { title, price } = this.state;
     return (
       <div>
-        <h3>Search</h3>
+        <h3>Filter Current Books</h3>
         <input
           type="text"
           name="title"
