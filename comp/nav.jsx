@@ -10,13 +10,13 @@ export default function NavBar(props) {
         <h4 className="navText">The Book Store</h4>
       </div>
       <div className="flex">
-        <NavLink className="navLink" activeClassName="active" to="./" exact>
+        <NavLink className="navLink" activeClassName="active" to="../" exact>
           Main Page
         </NavLink>
         <NavLink
           className="navLink"
           activeClassName="active"
-          to="../books"
+          to="..‹/books"
           exact
         >
           Book List
