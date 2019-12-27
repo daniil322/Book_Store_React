@@ -16,7 +16,7 @@ export default function NavBar(props) {
         <NavLink
           className="navLink"
           activeClassName="active"
-          to="..‹/books"
+          to="../books"
           exact
         >
           Book List

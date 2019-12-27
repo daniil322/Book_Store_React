@@ -47,21 +47,22 @@ function addReview(name, rate, text, date, id) {
   bookStorage.store("gBooks", gBooks);
   return Promise.resolve(gBooks);
 }
+
 function getBooks(filter) {
   gBooks = bookStorage.load("gBooks") ? bookStorage.load("gBooks") : books;
   if (filter) {
     if (filter.price === "") {
-      return gBooks.filter(book => {
+      return Promise.resolve( gBooks.filter(book => {
         return book.title.includes(filter.title);
-      });
+      }))
     }
-    return gBooks.filter(book => {
-      return (
+    return Promise.resolve( gBooks.filter(book => {
+      return  (
         book.title.includes(filter.title) &&
         book.listPrice.amount > +filter.lPrice &&
         book.listPrice.amount < +filter.hPrice
       );
-    });
+    }))
   }
   return Promise.resolve(gBooks);
 }
